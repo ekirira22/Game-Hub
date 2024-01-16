@@ -9,25 +9,66 @@
 </head>
 <body>
         <!-- Main Page -->
-    <div class="container min-h-screen bg-[url('./assets/Image.png')] bg-center bg-cover px-30 py-5">
+    <div class="container mx-auto min-h-screen bg-[url('./assets/Image.png')] bg-center bg-cover px-40 py-5 relative text-white">
             <!-- Navigation Bar -->
-        <nav class="flex items-center">
+        <nav class="mx-auto flex items-center">
             <img src="https://www.mmobomb.com/logo.png" alt="Game-Hub Logo" class="w-50 cursor-pointer">
             <ul class="flex-1 text-center">
-                <li class="list-none inline-block px-5"><a class="no-underline px-2"  href="#">Home</a></li>
-                <li class="list-none inline-block px-5"><a class="no-underline px-2" href="#">About</a></li>
-                <li class="list-none inline-block px-5"><a class="no-underline px-2" href="#">News</a></li>
-                <li class="list-none inline-block px-5"><a class="no-underline px-2" href="#">Contact</a></li>
+                <li class="list-none inline-block px-5 hover:text-red-500 duration-200"><a class="no-underline px-2"  href="#">Home</a></li>
+                <li class="list-none inline-block px-5 hover:text-red-500 duration-200"><a class="no-underline px-2" href="#">About</a></li>
+                <li class="list-none inline-block px-5 hover:text-red-500 duration-200"><a class="no-underline px-2" href="#">News</a></li>
+                <li class="list-none inline-block px-5 hover:text-red-500 duration-200"><a class="no-underline px-2" href="#">Contact</a></li>
             </ul>
-            <button class="px-8 py-2 rounded-full bg-cyan-500 mx-2">Login</button>
-            <button class="px-8 py-2 rounded-full bg-red-500 mx-2">Signup</button>
+            <button class="px-8 py-2 rounded-full bg-cyan-500 mx-2 hover:bg-transparent duration-200 hover:border hover:border-white border border-transparent">Login</button>
+            <button class="px-8 py-2 rounded-full bg-red-500 mx-2 hover:bg-transparent duration-200 hover:border hover:border-white border border-transparent">Signup</button>
         </nav>
 
-        <div>
-            <h1>Welcome to GameHub <br>Immerse yourself!! </h1>
+        <div class="mt-40 max-w-3xl">
+            <h1 class="text-6xl font-semibold leading-normal mb-5">Welcome to GameHub <br><span class="font-light">Immerse yourself!!</span> </h1>
             <p>
                 Explore our vast collection of games across genres, platforms, and modes. Join our vibrant community of gamers and share your passion, tips, and feedback. Unlock your gaming potential and have fun with GameHub
             </p>
+            <p class="mx-5 my-5 text-2xl">
+                Search your Favorite Game >>
+            </p>
+            <form action="" class="flex justify-around">
+                <input type="text" class="rounded-full px-8 py-3 text-black outline-none"  placeholder="Call of Duty"> 
+                 <select name="platform" id="platform" class="rounded-full text-black px-8 py-3 border-r-8 border-transparent outline-none">
+                    <option value="pc" class="text-black" selected>PC Platform</option>
+                    <option value="ps" class="text-black">Play Station</option>
+                    <option value="xbox" class="text-black">X-Box</option>
+                </select>
+                <input type="submit" value="Search" class="rounded-3xl bg-cyan-400 hover:bg-red-500 duration-200 px-10 py-3 mr-3">
+            </form>
+        </div>
+        <div id="giveaways" class="w-full xl:w-1/3 xl:absolute bottom-10 right-10 mt-10">
+            <h2 class="text-2xl text-center mb-4">GameHub Giveaways</h2>
+            <div class="flex space-y-4">
+                <img src="https://www.mmobomb.com/file/2022/5/mythic-heroes-box-218x150.png" alt="img1" class="w-1/4">
+                <p class="truncate ...">
+                    Mythic Heroes Gift Pack Key Giveaway (New Players Only)
+                </p>
+            </div>
+            <div class="w-full  mt-2 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
+                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-cyan-400" style="width: 45%"></div>
+            </div>
+            
+            
+        </div>
+    </div>
+        <!-- Results are displayed here  -->
+    <div class="container mx-auto min-h-screen px-40 py-5 relative bg-gray-300">
+        <h2 class="text-4xl text-center mt-3 font-semibold border-b border-gray-200 leading-normal">Latest Games</h2>
+          
+        <div class="mt-8">
+            <!-- Card Goes hrere -->
+            <div class="bg-white rounded overflow-hidden shadow">
+                <img src="https://www.mmobomb.com/g/1136/thumbnail.jpg" alt="image">
+                <div>
+                    <span>Overwatch 2</span>
+                    <span>Platform: PC (Windows) </span>
+                </div>
+            </div>
         </div>
     </div>
     
