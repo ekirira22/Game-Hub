@@ -57,12 +57,18 @@ function featuredGame(i=null){
             /* Event Listeners */
 
         fGame.querySelector('button#play').addEventListener('click', e => {
-            e.preventDefault()
             let orders = parseInt(e.target.children[0].innerText)
-            orders-=1
-            e.target.children[0].innerText = orders
-            alert('Thank you for Pre-Ordering with GameHub')
-            console.log(orders)
+                //Gray out button and display sold out for orders at 0
+                
+            if(orders <= 1){
+                e.target.textContent = 'SOLD-OUT'
+                e.target.setAttribute('disabled', '')
+            }else{
+                orders-=1
+                e.target.children[0].innerText = orders
+                alert('Thank you for Pre-Ordering with GameHub')
+            }
+            
         })
 
         fGame.querySelector('button#delete').addEventListener('click', e => {
