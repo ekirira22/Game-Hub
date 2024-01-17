@@ -18,12 +18,17 @@ const init = () =>{
     
 
 }
-function featuredGame(){
+function featuredGame(i=null){
+    let indx
         //Display a random game from the API
         //If sessionStorage is '' display random game . If it is set - Display that selected by user
     const url = `${apiURL}games`
     const method = 'GET'
-    const randomNumber = Math.floor(Math.random() * 396)
+    if(i!==null){
+        indx = i
+    }else{
+        indx = Math.floor(Math.random() * 396)
+    }
     const featured = document.querySelector('div#game')
 
     const response = processData(url,method)
@@ -32,29 +37,46 @@ function featuredGame(){
         const fGame = document.createElement('div')
         fGame.className = 'featured-game'
         fGame.innerHTML = `
-            <img src="${res[randomNumber].thumbnail}" alt="image" class="w-full">
+            <img src="${res[indx].thumbnail}" alt="image" class="w-full">
             <div class="m-4 relative">
                 <p class="text-center">Game Details:</p>
-                <p class="font-bold">${res[randomNumber].title}</p>
-                <p class=" text-gray-500 text-sm">${res[randomNumber].platform} </p> <br>
-                <p>Description: ${res[randomNumber].short_description}</p><br>
+                <p class="font-bold">${res[indx].title}</p>
+                <p class=" text-gray-500 text-sm">Platform: ${res[indx].platform} </p> <br>
+                <p>Description: ${res[indx].short_description}</p><br>
                 <div class="text-sm text-cyan-500 space-y-2">
-                    <p>Publisher: ${res[randomNumber].publisher}</p>
-                    <p>Developer: ${res[randomNumber].developer}</p>
-                    <p>Release Date: ${res[randomNumber].release_date}</p>
+                    <p>Publisher: ${res[indx].publisher}</p>
+                    <p>Developer: ${res[indx].developer}</p>
+                    <p>Release Date: ${res[indx].release_date}</p>
                 </div>
                 <div class="flex justify-between mt-4">
-                <button class="play-btn" id="play"><a href="">PRE-ORDER : <span id="count">${randomNumber}</span></a></button><span class="text-gray-500 text-sm">Limited Time Offer!!</span>
+                <button class="play-btn" id="play">PRE-ORDER : <span id="count">${indx}</span></button><span class="text-gray-500 text-sm">Limited Time Offer!!</span>
                 <button class="delete-btn" id="delete"><a href="">Not Interested</a></button>
                 </div>
             </div>
         `
+            /* Event Listeners */
+
+        fGame.querySelector('button#play').addEventListener('click', e => {
+            e.preventDefault()
+            let orders = parseInt(e.target.children[0].innerText)
+            orders-=1
+            e.target.children[0].innerText = orders
+            alert('Thank you for Pre-Ordering with GameHub')
+            console.log(orders)
+        })
+
+        fGame.querySelector('button#delete').addEventListener('click', e => {
+            e.preventDefault()
+            fGame.remove()
+            featuredGame()
+        })
         
         featured.appendChild(fGame)
 
     })
 }
 
+    /* Game Cards that display individual games */
 function displayGameCards(){
     //Display 12 random games in the main html
     const url = `${apiURL}games`
@@ -73,7 +95,7 @@ function displayGameCards(){
                 <img src="${game.thumbnail}" alt="image" class="thumbnail">
                 <div class="m-4 relative">
                       <span class="font-bold">${game.title}</span>
-                    <span class="block text-gray-500 text-sm">${game.platform}</span><span class="heart">&#9825;&#128147;</span>
+                    <span class="block text-gray-500 text-sm">${game.platform}</span><span class="heart" id="heart">♡</span>
 
                     <button class="card-button" id="view"><a href="">VIEW</a></button>
                 </div>
@@ -81,6 +103,29 @@ function displayGameCards(){
                     <span>${game.release_date}</span>
                 </div>
             `
+            /* Event Listeners */
+            card.querySelector('button#view').addEventListener('click', e => {
+                e.preventDefault()
+                    ///Find the specific array index of the game to pass it to the featuredGame() using findIndex
+                const indx = games.findIndex(mygame => {
+                    return mygame.title === game.title
+                })
+                    //Remove existing card and pass it to the function
+                document.querySelector('div.featured-game').remove()
+                featuredGame(indx)
+            })
+
+            card.querySelector('span#heart').addEventListener('click', e => {
+                let heartSwitcher = {
+                    "♡" : "❤",
+                    "❤" : "♡",
+                    '' : 'red',
+                    'red' : ''
+                }
+                e.target.textContent = heartSwitcher[e.target.innerText]
+                e.target.style.color = heartSwitcher[e.target.style.color]
+            })
+
             gameCard.appendChild(card)
             // console.log(game)
         })
