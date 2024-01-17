@@ -1,0 +1,15 @@
+{
+  "name": "game-hub",
+  "version": "1.0.0",
+  "description": "### Author Eric Maranga - Moringa School",
+  "main": "index.js",
+  "scripts": {
+    "build-css" : "tailwindcss build -i src/styles.css -o public/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

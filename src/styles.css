@@ -1,5 +1,67 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/**
+1. Correct line height in all browser
+2. Prevent adjustments of font size after orientation changes in iOS
+
+**/
+
+html{
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
 *{
   font-family: 'Poppins', sans-serif;
 }
 
-/* Tailwind CSS stylings - Apply directive fro multiple components*/
+/* Tailwind CSS stylings - Apply directive for multiple components - makes code look*/
+
+/* CARD DIRECTIVES*/
+
+.card{
+  @apply mt-8 grid lg:grid-cols-3 gap-10
+}
+
+.inner-card{
+  @apply bg-white rounded overflow-hidden shadow-md relative
+}
+
+.thumbnail{
+  @apply w-full h-32 sm:h-48 object-cover
+}
+
+.card-button{
+  @apply bg-cyan-500 p-1 md:p-2 text-white text-sm rounded-sm absolute bottom-0 right-0 hover:bg-cyan-500 duration-200
+}
+
+.heart{
+  @apply text-2xl cursor-pointer
+}
+
+/* MAIN GAME DIRECTIVES */
+
+.featured-game{
+  @apply bg-white overflow-hidden mt-5
+}
+.play-btn{
+  @apply bg-cyan-500 p-1 lg:p-2 text-white text-sm rounded-sm
+}
+.delete-btn{
+  @apply bg-red-500 p-1 lg:p-2 text-white text-sm rounded-sm
+}
+
+
+/* GIVE AWAY SECTION */
+
+.give-card{
+  @apply flex space-y-2
+}
+.progress-bar{
+  @apply w-full mt-4 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700
+}
+.progress{
+  @apply bg-blue-600 h-1.5 rounded-full dark:bg-cyan-400
+}

@@ -7,14 +7,23 @@ const init = () =>{
 
 }
 
-function displayGames(){
-    fetch(apiURL, {
-        method : 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'cb2c8570d8mshe4a953cd81637f3p13b222jsn2da2a37cafb8',
-            'X-RapidAPI-Host': 'mmo-games.p.rapidapi.com'
-        }
-    }).then(res =>res.json()).then(resp => console.log(resp[1]))
+async function displayGames(){
+    const url = 'https://mmo-games.p.rapidapi.com/games';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'cb2c8570d8mshe4a953cd81637f3p13b222jsn2da2a37cafb8',
+		'X-RapidAPI-Host': 'mmo-games.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
 }
 
 /************** REUSABLE FUNCTIONS ****************************/
