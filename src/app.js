@@ -1,5 +1,5 @@
 //ALGORITHMIC PROCESS
-const apiURL = 'https://mmo-games.p.rapidapi.com/games'
+const apiURL = 'https://mmo-games.p.rapidapi.com/'
 const init = () =>{
     //STEP 1
     //FETCH ALL THE GAMES FROM URL AND DISPLAY THEM
@@ -7,23 +7,8 @@ const init = () =>{
 
 }
 
-async function displayGames(){
-    const url = 'https://mmo-games.p.rapidapi.com/games';
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'cb2c8570d8mshe4a953cd81637f3p13b222jsn2da2a37cafb8',
-		'X-RapidAPI-Host': 'mmo-games.p.rapidapi.com'
-	}
-};
-
-try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
+function displayGames(){
+   
 }
 
 /************** REUSABLE FUNCTIONS ****************************/
