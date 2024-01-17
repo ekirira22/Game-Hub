@@ -50,7 +50,7 @@ function featuredGame(i=null){
                 </div>
                 <div class="flex justify-between mt-4">
                 <button class="play-btn" id="play">PRE-ORDER : <span id="count">${indx}</span></button><span class="text-gray-500 text-sm">Limited Time Offer!!</span>
-                <button class="delete-btn" id="delete"><a href="">Not Interested</a></button>
+                <button class="delete-btn" id="delete"><a href="#game">Not Interested</a></button>
                 </div>
             </div>
         `
@@ -66,7 +66,6 @@ function featuredGame(i=null){
         })
 
         fGame.querySelector('button#delete').addEventListener('click', e => {
-            e.preventDefault()
             fGame.remove()
             featuredGame()
         })
@@ -97,7 +96,7 @@ function displayGameCards(){
                       <span class="font-bold">${game.title}</span>
                     <span class="block text-gray-500 text-sm">${game.platform}</span><span class="heart" id="heart">♡</span>
 
-                    <button class="card-button" id="view"><a href="">VIEW</a></button>
+                    <button class="card-button" id="view"><a href="#game">VIEW</a></button>
                 </div>
                 <div class="game-date">
                     <span>${game.release_date}</span>
@@ -105,7 +104,6 @@ function displayGameCards(){
             `
             /* Event Listeners */
             card.querySelector('button#view').addEventListener('click', e => {
-                e.preventDefault()
                     ///Find the specific array index of the game to pass it to the featuredGame() using findIndex
                 const indx = games.findIndex(mygame => {
                     return mygame.title === game.title
@@ -114,7 +112,7 @@ function displayGameCards(){
                 document.querySelector('div.featured-game').remove()
                 featuredGame(indx)
             })
-
+                //Swicth hearts when user selects
             card.querySelector('span#heart').addEventListener('click', e => {
                 let heartSwitcher = {
                     "♡" : "❤",
