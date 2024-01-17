@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Hub</title>
-    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <button class="px-8 py-2 rounded-full bg-red-500 mx-2 hover:bg-transparent duration-200 hover:border hover:border-white border border-transparent">Signup</button>
         </nav>
 
-        <div class="mt-40 max-w-3xl">
+        <div class="mt-40 sm:max-w-3xl">
             <h1 class="text-6xl font-semibold leading-normal mb-5">Welcome to GameHub <br><span class="font-light">Immerse yourself!!</span> </h1>
             <p>
                 Explore our vast collection of games across genres, platforms, and modes. Join our vibrant community of gamers and share your passion, tips, and feedback. Unlock your gaming potential and have fun with GameHub
@@ -42,41 +42,76 @@
                 <input type="submit" value="Search" class="rounded-3xl bg-cyan-400 hover:bg-red-500 duration-200 px-10 py-3 mr-3">
             </form>
         </div>
-        <div id="giveaways" class="w-full xl:w-1/3 xl:absolute bottom-10 right-10 mt-10">
-            <h2 class="text-2xl text-center mb-4">GameHub Giveaways</h2>
-            <div class="flex space-y-4">
-                <img src="https://www.mmobomb.com/file/2022/5/mythic-heroes-box-218x150.png" alt="img1" class="w-1/4">
-                <p class="truncate ...">
-                    Mythic Heroes Gift Pack Key Giveaway (New Players Only)
-                </p>
-            </div>
-            <div class="w-full  mt-2 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
-                <div class="bg-blue-600 h-1.5 rounded-full dark:bg-cyan-400" style="width: 45%"></div>
-            </div>
-            
-            
-        </div>
+        <img src="./assets/cover.png" alt="cover-image" class="w-ful mt-10 xl:w-2/5 xl:absolute bottom-10 right-10">
     </div>
         <!-- Results are displayed here  -->
-        <div class="container mx-auto min-h-screen px-40 py-5 relative bg-gray-100">
-            <h2 class="text-4xl text-center mt-3 font-semibold border-b border-gray-200 leading-normal">Latest Games</h2>
+        <div class="container mx-auto min-h-screen px-20 py-5 relative bg-cyan-100 bg-opacity-30">
+            <h2 class="text-4xl text-center mt-3 font-semibold border-b border-gray-200 leading-normal">Our Latest Games</h2>
               
-            <div class="mt-8">
+            <div class="mt-8 grid lg:grid-cols-3 gap-10">
                 <!-- Card Goes hrere -->
+                <!-- card1 -->
                 <div class="bg-white rounded overflow-hidden shadow-md relative">
                     <img src="https://www.mmobomb.com/g/1136/thumbnail.jpg" alt="image" class="w-full h-32 sm:h-48 object-cover">
                     <div class="m-4 relative">
                         <span class="font-bold">Overwatch 2</span>
-                        <span class="block text-gray-500 text-sm">Platform: PC (Windows) </span>
-                        <button class="bg-red-500 p-1 md:p-2 text-white text-sm rounded-sm absolute bottom-0 right-0 hover:bg-cyan-500 duration-200">PLAY NOW</button>
+                        <span class="block text-gray-500 text-sm">Platform: PC (Windows) </span><span class="text-2xl cursor-pointer">&#9825;&#128147;</span>
+
+                        <button class="bg-cyan-500 p-1 md:p-2 text-white text-sm rounded-sm absolute bottom-0 right-0 hover:bg-cyan-500 duration-200"><a href="">PLAY NOW</a></button>
                     </div>
                     <div class="bg-red-200 text-gray-600 text-xs font-semibold rounded-full p-2 absolute top-0 ml-2 mt-2">
                         <span>2022-10-04</span>
                     </div>
                 </div>
+                
+                <!-- end of card1  -->
+            </div>
+        </div>
+            <!-- Giveaway and main game section  -->
+        <div class="container grid lg:grid-cols-3 grid-cols-1  gap-6 mx-auto min-h-screen px-20 py-5">
+
+                <!-- Main Game section  -->
+            <div id="game" class="w-full lg:col-span-2 p-2 rounded-sm shadow-md">
+                <h2 class="text-3xl lg:text-4xl text-center font-semibold text-red-500">Featured Game</h2>
+                <!-- Main Game goes here -->
+
+                <div class="bg-white overflow-hidden mt-5">
+                    <img src="https://www.mmobomb.com/g/1136/thumbnail.jpg" alt="image" class="w-full">
+                    <div class="m-4 relative">
+                        <p class="text-center">Game Details:</p>
+                        <p class="font-bold">Overwatch 2</p>
+                        <p class=" text-gray-500 text-sm">Platform: PC (Windows) </p> <br>
+                        <p>Description: <span>Big changes come to the Overwatch formula in this sequel...and so does PvE content, eventually.</span></p><br>
+                        <div class="text-sm text-cyan-500 space-y-2">
+                            <p>Publisher: <span>Activision Blizzard King</span> </p>
+                            <p>Developer: <span>Blizzard Entertainment"</span> </p>
+                            <p>Release Date: <span>2022-10-04</span> </p>
+                        </div>
+                       <div class="flex justify-between mt-4">
+                        <button class="bg-cyan-500 p-1 lg:p-2 text-white text-sm rounded-sm"><a href="">PLAY</a></button>
+                        <button class="bg-red-500 p-1 lg:p-2 text-white text-sm rounded-sm"><a href="">DELETE</a></button>
+                       </div>
+                    </div>
+                </div>
+                
+
+            </div>
+                <!-- Giveaway section  -->
+            <div class="p-2 rounded-sm shadow-md">
+                <h2 class="text-xl text-center mb-4 mt-4 border-b border-gray-300 leading-normal">GameHub Giveaways</h2>
+                <div id="giveaways" class="flex space-y-2">
+                    <!-- Game Feature wil cme here  -->
+                    <img src="https://www.mmobomb.com/file/2022/5/mythic-heroes-box-218x150.png" alt="img1" class="w-1/4">
+                    <p class="truncate p-2">
+                        Mythic Heroes Gift Pack Key Giveaway (New Players Only)
+                    </p>
+                </div>
+                <div class="w-full mt-4 bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
+                    <div class="bg-blue-600 h-1.5 rounded-full dark:bg-cyan-400" style="width: 45%"></div>
+                </div>
             </div>
         </div>
     
-    <script src="./src/js/app.js"></script>
+    <script src="./src/app.js"></script>
 </body>
 </html>
