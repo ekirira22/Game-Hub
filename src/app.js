@@ -55,33 +55,31 @@ function featuredGame(i=null){
             </div>
         `
             /* Event Listeners */
-
+                //Checks if orders are below 0 to disable
         fGame.querySelector('button#play').addEventListener('click', e => {
             let orders = parseInt(e.target.children[0].innerText)
                 //Gray out button and display sold out for orders at 0
-                
-            if(orders <= 1){
-                e.target.textContent = 'SOLD-OUT'
-                e.target.setAttribute('disabled', '')
-            }else{
+                if(orders <= 0){
+                    e.target.textContent = 'SOLD-OUT'
+                    e.target.setAttribute('disabled', '')
+                    e.target.style.opacity = 0.5
+                }else{
                 orders-=1
                 e.target.children[0].innerText = orders
-                alert('Thank you for Pre-Ordering with GameHub')
-            }
-            
+                alert('Thank you for Pre-Ordering with GameHub')  
+                }          
         })
 
         fGame.querySelector('button#delete').addEventListener('click', e => {
             fGame.remove()
             featuredGame()
         })
-        
         featured.appendChild(fGame)
-
     })
 }
 
     /* Game Cards that display individual games */
+    /* Mambo iko hapa */
 function displayGameCards(){
     //Display 12 random games in the main html
     const url = `${apiURL}games`

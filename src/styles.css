@@ -20,6 +20,15 @@ html{
 
 /* Tailwind CSS stylings - Apply directive for multiple components - makes code look*/
 
+/* nav bar directives */
+.nav-links{
+  @apply list-none inline-block px-5 hover:text-red-500 duration-200
+}
+
+.nav-btns{
+  @apply px-8 py-2 rounded-full mx-2 hover:bg-transparent duration-200 hover:border hover:border-white border border-transparent
+}
+
 /* CARD DIRECTIVES*/
 
 .card{
