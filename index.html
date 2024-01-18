@@ -9,9 +9,9 @@
 </head>
 <body>
         <!-- Main Page -->
-    <div class="container mx-auto min-h-screen bg-[url('../assets/Image.png')] bg-center bg-cover px-20 md:px-40 py-5 relative text-white">
+    <div class="nav-container">
             <!-- Navigation Bar -->
-        <nav class="mx-auto flex items-center">
+        <nav class="nav-bar">
             <img src="https://www.mmobomb.com/logo.png" alt="Game-Hub Logo" class="w-50 cursor-pointer">
             <ul class="flex-1 text-center">
                 <li class="nav-links"><a class="no-underline px-2"  href="#">Home</a></li>
@@ -19,12 +19,13 @@
                 <li class="nav-links"><a class="no-underline px-2" href="#">News</a></li>
                 <li class="nav-links"><a class="no-underline px-2" href="#">Contact</a></li>
             </ul>
+                <!-- Nav Buttons  -->
             <button class="nav-btns bg-cyan-500 ">Login</button>
             <button class="nav-btns bg-red-500 ">Signup</button>
         </nav>
-
-        <div class="mt-40 sm:max-w-3xl">
-            <h1 class="text-6xl font-semibold leading-normal mb-5">Welcome to GameHub <br><span class="font-light">Immerse yourself!!</span> </h1>
+            <!-- Hero Section Left -->
+        <div class="hero-container">
+            <h1 class="hero-heading">Welcome to GameHub <br><span class="font-light">Immerse yourself!!</span> </h1>
             <p>
                 Explore our vast collection of games across genres, platforms, and modes. Join our vibrant community of gamers and share your passion, tips, and feedback. Unlock your gaming potential and have fun with GameHub
             </p>
@@ -33,17 +34,19 @@
             </p>
                 <!-- Form action for search here  -->
             <form action="get" id="myform">
-                 <select name="platform" id="platform" class="rounded-full text-black px-8 py-3 border-r-8 border-transparent outline-none">
+                 <select name="platform" id="platform" class="select-form">
                     <option value="" class="text-black" disabled selected>-- Select a platform --</option>
                     <option value="pc" class="text-black">PC Platform</option>
                     <option value="browser" class="text-black">Web Browser</option>
                 </select>
-                <input type="submit" value="Search" class="rounded-3xl bg-cyan-400 hover:bg-red-500 duration-200 px-10 py-3 mr-3">
+                <input type="submit" value="Search" class="form-submit">
             </form>
         </div>
-        <img src="./assets/cover.png" alt="cover-image" class="w-ful mt-10 xl:w-2/5 xl:absolute bottom-10 right-10">
+            <!-- Hero Image right  -->
+        <img src="./assets/cover.png" alt="cover-image" class="hero-image">
     </div>
             <!-- Giveaway and main game section  -->
+            
     <div class="container grid lg:grid-cols-3 grid-cols-1 gap-6 mx-auto min-h-screen px-20 py-5">
 
             <!-- Main Game section  -->

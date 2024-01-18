@@ -15,17 +15,22 @@ const init = () =>{
         //          GAME ON THE FEATURED GAME SESSION -- PATCH,DELETE,POST WILL BE DONE ON LOCAL JSON
         //STEP 6 - ADD EVENT LISTENERS TO PRE-ORDER AND DELETE BUTTONS AND PERSIST WITH DATABASE
     featuredGame()
-    
-
 }
-function featuredGame(i=null){
+async function featuredGame(id=null){
     let indx
         //Display a random game from the API
         //If sessionStorage is '' display random game . If it is set - Display that selected by user
-    const url = `${apiURL}games`
+    let url = `${apiURL}games`
     const method = 'GET'
-    if(i!==null){
-        indx = i
+    if(id!==null){
+            //Search for the index of the game and save it to indx
+        const url = `${apiURL}games`
+        const method = 'GET'
+        const response = await processData(url,method)
+        const obj = response.find(game => {
+            return game.id === id
+        })
+        indx = response.indexOf(obj)
     }else{
         indx = Math.floor(Math.random() * 396) //Theres a total of 396 games
     }
@@ -77,9 +82,7 @@ function featuredGame(i=null){
         featured.appendChild(fGame)
     })
 }
-
     /* Game Cards that display individual games */
-    /* Mambo iko hapa */
     /* This function will display game cards, and also sort according to platform */
 
 function displayGameCards(platform=null){
@@ -111,22 +114,21 @@ function displayGameCards(platform=null){
                 <img src="${game.thumbnail}" alt="image" class="thumbnail">
                 <div class="m-4 relative">
                     <span class="font-bold">${game.title}</span>
-                    <span class="block text-gray-500 text-sm">${game.platform}</span><span class="heart" id="heart">♡</span>
+                    <span class="block text-gray-500 text-sm">Platform: ${game.platform}</span><span class="heart" id="heart">♡</span>
 
                     <button class="card-button" id="view"><a href="#game">VIEW</a></button>
                 </div>
                 <div class="game-date">
                     <span>${game.release_date}</span>
                 </div>
-                
             `
             /* Event Listeners */
             card.querySelector('button#view').addEventListener('click', e => {
-                    ///Find the specific array index of the game to pass it to the featuredGame() using findIndex
-                const indx = games.indexOf(game)
+                    ///Pass the id to featured game to post the id
+                const id = game.id
                     //Remove existing card and pass it to the function
                 document.querySelector('div.featured-game').remove()
-                featuredGame(indx)
+                featuredGame(id)
             })
                 //Swicth hearts when user selects
             card.querySelector('span#heart').addEventListener('click', e => {
@@ -139,7 +141,6 @@ function displayGameCards(platform=null){
                 e.target.textContent = heartSwitcher[e.target.innerText]
                 e.target.style.color = heartSwitcher[e.target.style.color]
             })
-
             gameCard.appendChild(card)
             // console.log(game)
         })
@@ -171,7 +172,6 @@ function giveAways(){
         })
     })
 }
-
 /************** REUSABLE FUNCTIONS ****************************/
     //FUNCTION THAT FETCHES API DATA and returns 
 async function processData(url,method,options=null){
@@ -206,8 +206,5 @@ document.querySelector('form#myform').addEventListener('submit', e => {
     displayGameCards(platform)
     document.querySelector('form#myform').reset()
 })
-
-
 /******************** MAIN EVENT LISTENER *********************/
-
 document.addEventListener('DOMContentLoaded', init)
