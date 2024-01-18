@@ -27,7 +27,7 @@ function featuredGame(i=null){
     if(i!==null){
         indx = i
     }else{
-        indx = Math.floor(Math.random() * 396)
+        indx = Math.floor(Math.random() * 396) //Theres a total of 396 games
     }
     const featured = document.querySelector('div#game')
 
@@ -80,24 +80,37 @@ function featuredGame(i=null){
 
     /* Game Cards that display individual games */
     /* Mambo iko hapa */
-function displayGameCards(){
-    //Display 12 random games in the main html
-    const url = `${apiURL}games`
-    const method = 'GET'
-        // let idsArray = [] = randomizer(url,method)
-        // console.log(idsArray.length)
+    /* This function will display game cards, and also sort according to platform */
 
+function displayGameCards(platform=null){
+        //By default this function displays all games from index 0 - 395 in the main html
+        //We will add an event listener to the form in thw hero section that will take the value of the platform
+        //That value will be received by this function, thus the url changes and options value for processData will be passed
+    const method = 'GET'
+    let url
+    let gamesList
+        //If platform is null i.e has a no value, allow it to fetch all games from index 0 - 395
+    if(platform !== null){
+        let options = platform
+        url = `${apiURL}games?platform=${platform}`
+        gamesList = processData(url,method,options)
+    }else{
+        url = `${apiURL}games`
+        gamesList = processData(url,method)
+            //If platform has a value i.e pc or browser. Set options to the platform, change the url to accept platform, pass value and fetch
+            //to get a sorted list according to value
+    }
         //Display games on the main page
     const gameCard = document.querySelector('div#gamecard')
-    const gamesList = processData(url,method)
     gamesList.then(games => {
         games.forEach(game => {
             const card = document.createElement('div')
             card.className = 'inner-card'
             card.innerHTML = `
+                
                 <img src="${game.thumbnail}" alt="image" class="thumbnail">
                 <div class="m-4 relative">
-                      <span class="font-bold">${game.title}</span>
+                    <span class="font-bold">${game.title}</span>
                     <span class="block text-gray-500 text-sm">${game.platform}</span><span class="heart" id="heart">♡</span>
 
                     <button class="card-button" id="view"><a href="#game">VIEW</a></button>
@@ -105,13 +118,12 @@ function displayGameCards(){
                 <div class="game-date">
                     <span>${game.release_date}</span>
                 </div>
+                
             `
             /* Event Listeners */
             card.querySelector('button#view').addEventListener('click', e => {
                     ///Find the specific array index of the game to pass it to the featuredGame() using findIndex
-                const indx = games.findIndex(mygame => {
-                    return mygame.title === game.title
-                })
+                const indx = games.indexOf(game)
                     //Remove existing card and pass it to the function
                 document.querySelector('div.featured-game').remove()
                 featuredGame(indx)
@@ -171,6 +183,10 @@ async function processData(url,method,options=null){
         }
     }
     try{
+        //Check if options value has a value. If it has add to headers section
+        if(options !== null){
+            config.headers.platform = options
+        }
         const results = await fetch(url,config)
 
         if(!results.ok){
@@ -181,6 +197,15 @@ async function processData(url,method,options=null){
         console.error(error.message)
     }
 }/*********************** EVENT LISTENER FUNCTIONS *************/
+document.querySelector('form#myform').addEventListener('submit', e => {
+    e.preventDefault()
+    const platform = e.target.platform.value
+        //Clear the existing display
+    document.querySelector('div#gamecard').innerHTML = ''
+        //Pass the value to our displayCards()
+    displayGameCards(platform)
+    document.querySelector('form#myform').reset()
+})
 
 
 /******************** MAIN EVENT LISTENER *********************/

@@ -32,10 +32,11 @@
                 Search your Favorite Game >>
             </p>
                 <!-- Form action for search here  -->
-            <form action="">
+            <form action="get" id="myform">
                  <select name="platform" id="platform" class="rounded-full text-black px-8 py-3 border-r-8 border-transparent outline-none">
-                    <option value="pc" class="text-black" selected>PC Platform</option>
-                    <option value="web" class="text-black">Web Browser</option>
+                    <option value="" class="text-black" disabled selected>-- Select a platform --</option>
+                    <option value="pc" class="text-black">PC Platform</option>
+                    <option value="browser" class="text-black">Web Browser</option>
                 </select>
                 <input type="submit" value="Search" class="rounded-3xl bg-cyan-400 hover:bg-red-500 duration-200 px-10 py-3 mr-3">
             </form>
