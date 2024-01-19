@@ -61,7 +61,7 @@ function displayGameCards(platform=null,category=null){
                 </div>
             `
             /* Event Listeners */
-            card.querySelector('button#view').addEventListener('click', e => {
+            card.querySelector('button#view').addEventListener('click', () => {
                     ///Pass the id to featured game to post the id
                 const id = game.id
                     //Remove existing card and pass it to the function
@@ -69,7 +69,7 @@ function displayGameCards(platform=null,category=null){
                 featuredGame(id)
             })
                 //Swicth hearts when user selects
-            card.querySelector('span#heart').addEventListener('click', e => {
+            card.querySelector('span#heart').addEventListener('click', () => {
                 let heartSwitcher = {
                     "♡" : "❤",
                     "❤" : "♡",
@@ -169,7 +169,7 @@ async function featuredGame(id=null){
                 }          
         })
 
-        fGame.querySelector('button#delete').addEventListener('click', e => {
+        fGame.querySelector('button#delete').addEventListener('click', () => {
             fGame.remove()
             featuredGame()
         })
