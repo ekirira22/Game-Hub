@@ -69,7 +69,7 @@ function displayGameCards(platform=null,category=null){
                 featuredGame(id)
             })
                 //Swicth hearts when user selects
-            card.querySelector('span#heart').addEventListener('click', () => {
+            card.querySelector('span#heart').addEventListener('click', e => {
                 let heartSwitcher = {
                     "♡" : "❤",
                     "❤" : "♡",
