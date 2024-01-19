@@ -33,13 +33,24 @@
                 Search your Favorite Game >>
             </p>
                 <!-- Form action for search here  -->
-            <form action="get" id="myform">
+            <form action="get" id="myform" class="space-y-2">
                  <select name="platform" id="platform" class="select-form">
-                    <option value="" class="text-black" disabled selected>-- Select a platform --</option>
+                    <option value="" class="text-black" disabled selected>-- Select a Platform --</option>
                     <option value="pc" class="text-black">PC Platform</option>
                     <option value="browser" class="text-black">Web Browser</option>
                 </select>
-                <input type="submit" value="Search" class="form-submit">
+                <select name="category" id="category" class="select-form">
+                    <option value="" class="text-black" disabled selected>-- Select a Category --</option>
+                    <option value="shooter" class="text-black">Shooter Games</option>
+                    <option value="moba" class="text-black">MOBA</option>
+                    <option value="battle-royale" class="text-black">Battle Royale</option>
+                    <option value="card" class="text-black">Card Games</option>
+                    <option value="racing" class="text-black">Racing Games</option>
+                    <option value="sports" class="text-black">Sport Games</option>
+                    <option value="social" class="text-black">Social Games</option>
+                    <option value="fighting" class="text-black">Fighting Games</option>
+                </select>
+                <input type="submit" value="Filter" class="form-submit">
             </form>
         </div>
             <!-- Hero Image right  -->
